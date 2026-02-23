@@ -4,24 +4,30 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Membership | The Culture Box</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="/assets/css/style.css" />
- <link rel="icon" type="image/png" href="/img/logo/pixel-leaf-badge.png">
-<link rel="apple-touch-icon" href="/img/logo/pixel-leaf-header.png">
-<meta name="theme-color" content="#010000">
+
+  <!-- Badge icon for favicon / app icon -->
+  <link rel="icon" type="image/png" href="/assets/img/logo/pixel-leaf-badge.png">
+  <link rel="apple-touch-icon" href="/assets/img/logo/pixel-leaf-badge.png">
+  <meta name="theme-color" content="#010000">
 </head>
+
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
     <a class="wordmark" href="index.html">
-  <span class="mark">
-    <img src="/img/logo/pixel-leaf-header.png" alt="The Culture Box">
-  </span>
-  THE CULTURE BOX
-</a>
+      <span class="mark">
+        <img src="/assets/img/logo/pixel-leaf-header.png" alt="The Culture Box">
+      </span>
+      <span class="wm-full">THE CULTURE BOX</span>
+      <span class="wm-short">TCB</span>
+    </a>
 
     <nav class="navlinks">
       <a href="membership.html">Membership</a>
@@ -103,7 +109,8 @@
         </p>
 
         <div class="card form">
-              <form id="joinForm" class="field">
+          <form id="joinForm">
+            <div class="field">
               <label for="tier">Membership tier</label>
               <select id="tier" name="tier" required>
                 <option value="starter">Starter — $29/mo</option>
@@ -133,23 +140,25 @@
             <hr class="sep" />
 
             <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              <label for="emailJoin">Email</label>
+              <input id="emailJoin" name="email" type="email" placeholder="you@example.com" required />
             </div>
 
             <div class="field">
               <label for="age">21+ confirmation</label>
-              <select id="age" name="age" required>
+              <select id="age" name="age21" required>
                 <option value="">Select</option>
                 <option value="yes">Yes, I am 21+</option>
                 <option value="no">No</option>
               </select>
               <div class="helper">We do not sell or ship cannabis. Local perks vary by jurisdiction and partner availability.</div>
             </div>
-               <button class="btn btn-primary" type="submit">Continue</button>
-                 <div id="joinStatus" class="helper" style="margin-top:10px;"></div>
-                      By joining, you agree to our terms and acknowledge local perk availability varies by location.
-             </div>
+
+            <button class="btn btn-primary" type="submit">Continue</button>
+            <div id="joinStatus" class="helper" style="margin-top:10px;"></div>
+            <div class="helper" style="margin-top:10px;">
+              By joining, you agree to our terms and acknowledge local perk availability varies by location.
+            </div>
           </form>
         </div>
       </div>
@@ -170,7 +179,6 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <footer class="site-footer">
@@ -183,9 +191,10 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="/assets/js/main.js"></script>
 <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
   const joinForm = document.getElementById("joinForm");
   const joinStatus = document.getElementById("joinStatus");
 
@@ -197,7 +206,7 @@
       tier: document.getElementById("tier").value,
       state: document.getElementById("state").value,
       city: document.getElementById("city").value,
-      email: document.getElementById("email").value,
+      email: document.getElementById("emailJoin").value,
       age21: document.getElementById("age").value
     };
 

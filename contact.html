@@ -4,24 +4,31 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | The Culture Box</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="/assets/css/style.css" />
-<link rel="icon" type="image/png" href="/img/logo/pixel-leaf-badge.png">
-<link rel="apple-touch-icon" href="/img/logo/pixel-leaf-header.png">
-<meta name="theme-color" content="#010000">
+
+  <!-- Badge icon for favicon / app icon -->
+  <link rel="icon" type="image/png" href="/assets/img/logo/pixel-leaf-badge.png">
+  <link rel="apple-touch-icon" href="/assets/img/logo/pixel-leaf-badge.png">
+  <meta name="theme-color" content="#010000">
 </head>
+
 <body>
 
 <header class="site-header">
   <div class="container header-inner">
-  <a class="wordmark" href="index.html">
-  <span class="mark">
-    <img src="/img/logo/pixel-leaf-header.png" alt="The Culture Box">
-  </span>
-  THE CULTURE BOX
-</a>
+    <a class="wordmark" href="index.html">
+      <span class="mark">
+        <img src="/assets/img/logo/pixel-leaf-header.png" alt="The Culture Box">
+      </span>
+      <span class="wm-full">THE CULTURE BOX</span>
+      <span class="wm-short">TCB</span>
+    </a>
+
     <nav class="navlinks">
       <a href="membership.html">Membership</a>
       <a href="how-it-works.html">How it works</a>
@@ -47,42 +54,48 @@
   <section class="section">
     <div class="container grid">
 
+      <!-- GENERAL CONTACT -->
       <div class="col-6 card form">
         <span class="badge">General</span>
-        <form id="partnerForm" style="margin-top:14px;">
+
+        <form id="generalForm" style="margin-top:14px;">
           <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" placeholder="Your name" />
+            <label for="g_name">Name</label>
+            <input id="g_name" name="name" placeholder="Your name" />
           </div>
 
           <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" />
+            <label for="g_email">Email</label>
+            <input id="g_email" name="email" type="email" placeholder="you@example.com" required />
           </div>
 
           <div class="field">
-            <label for="msg">Message</label>
-            <textarea id="msg" name="msg" rows="5" placeholder="How can we help?"></textarea>
+            <label for="g_msg">Message</label>
+            <textarea id="g_msg" name="msg" rows="5" placeholder="How can we help?" required></textarea>
           </div>
 
-          <button class="btn btn-primary" type="button">Send (wire API later)</button>
+          <button class="btn btn-primary" type="submit">Send</button>
+          <div id="generalStatus" class="helper" style="margin-top:10px;"></div>
+
           <div class="helper" style="margin-top:10px;">
-            This form will be wired to email next (Node/Nodemailer or Formspree).
+            We typically respond within 24–48 hours.
           </div>
         </form>
       </div>
 
+      <!-- PARTNER INQUIRY -->
       <div class="col-6 card form">
         <span class="badge">Partner inquiry</span>
-        <form style="margin-top:14px;">
+
+        <form id="partnerForm" style="margin-top:14px;">
           <div class="field">
             <label for="biz">Business name</label>
-            <input id="biz" name="biz" placeholder="Dispensary / Hemp shop / Culture brand" />
+            <input id="biz" name="biz" placeholder="Dispensary / Hemp shop / Culture brand" required />
           </div>
 
           <div class="field">
             <label for="market">Market</label>
-            <select id="market" name="market">
+            <select id="market" name="market" required>
               <option value="dmv">DMV (Licensed Cannabis Partners)</option>
               <option value="satx">San Antonio (Hemp & Culture Partners)</option>
               <option value="other">Other</option>
@@ -95,12 +108,19 @@
           </div>
 
           <div class="field">
-            <label for="pmsg">What are you interested in?</label>
-            <textarea id="pmsg" name="pmsg" rows="5" placeholder="Standard partner fee, premium placement, events, etc."></textarea>
+            <label for="p_email">Email</label>
+            <input id="p_email" name="email" type="email" placeholder="you@business.com" required />
           </div>
 
-         <button class="btn btn-primary" type="submit">Apply</button>
-             <div id="partnerStatus" class="helper" style="margin-top:10px;"></div>
+          <div class="field">
+            <label for="pmsg">What are you interested in?</label>
+            <textarea id="pmsg" name="pmsg" rows="5" placeholder="Standard partner fee, premium placement, events, etc." required></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Apply</button>
+          <div id="partnerStatus" class="helper" style="margin-top:10px;"></div>
+
+          <div class="helper" style="margin-top:10px;">
             DMV requires verified licensing for cannabis partners. Partners control product, pricing, and checkout locally.
           </div>
         </form>
@@ -120,9 +140,42 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="/assets/js/main.js"></script>
 <script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // GENERAL CONTACT -> /contact
+  const generalForm = document.getElementById("generalForm");
+  const generalStatus = document.getElementById("generalStatus");
+
+  generalForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    generalStatus.textContent = "Sending...";
+
+    const payload = {
+      name: document.getElementById("g_name").value,
+      email: document.getElementById("g_email").value,
+      message: document.getElementById("g_msg").value
+    };
+
+    try{
+      const r = await fetch("https://api.theculturebox.shop/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await r.json();
+      if(!data.ok) throw new Error(data.error || "Failed");
+
+      generalStatus.textContent = "Sent. We’ll get back to you soon.";
+      generalForm.reset();
+    } catch(err){
+      generalStatus.textContent = "Error sending. Please try again in a moment.";
+    }
+  });
+
+  // PARTNER INQUIRY -> /partner
   const partnerForm = document.getElementById("partnerForm");
   const partnerStatus = document.getElementById("partnerStatus");
 
@@ -135,8 +188,7 @@
       market: document.getElementById("market").value,
       role: document.getElementById("role").value,
       message: document.getElementById("pmsg").value,
-      email: document.getElementById("email").value,
-      name: document.getElementById("name") ? document.getElementById("name").value : ""
+      email: document.getElementById("p_email").value
     };
 
     try{
@@ -156,5 +208,6 @@
     }
   });
 </script>
+
 </body>
 </html>
