@@ -103,8 +103,7 @@
         </p>
 
         <div class="card form">
-          <form>
-            <div class="field">
+              <form id="joinForm">            <div class="field">
               <label for="tier">Membership tier</label>
               <select id="tier" name="tier" required>
                 <option value="starter">Starter — $29/mo</option>
@@ -148,9 +147,8 @@
               <div class="helper">We do not sell or ship cannabis. Local perks vary by jurisdiction and partner availability.</div>
             </div>
 
-            <button class="btn btn-primary" type="button">
-              Continue to Checkout (Stripe next)
-            </button>
+            <button class="btn btn-primary" type="submit">Continue</button>
+               <div id="joinStatus" class="helper" style="margin-top:10px;"></div>
             <div class="helper" style="margin-top:10px;">
               By joining, you agree to our terms and acknowledge local perk availability varies by location.
             </div>
@@ -189,5 +187,37 @@
 
 <script src="assets/js/main.js"></script>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script>
+  const joinForm = document.getElementById("joinForm");
+  const joinStatus = document.getElementById("joinStatus");
+
+  joinForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    joinStatus.textContent = "Sending...";
+
+    const payload = {
+      tier: document.getElementById("tier").value,
+      state: document.getElementById("state").value,
+      city: document.getElementById("city").value,
+      email: document.getElementById("email").value,
+      age21: document.getElementById("age").value
+    };
+
+    try{
+      const r = await fetch("https://api.theculturebox.shop/join", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await r.json();
+      if(!data.ok) throw new Error(data.error || "Failed");
+
+      joinStatus.textContent = "You’re in. Check your email soon for next steps.";
+      joinForm.reset();
+    } catch(err){
+      joinStatus.textContent = "Error sending. Please try again in a moment.";
+    }
+  });
+</script>
 </body>
 </html>

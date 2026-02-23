@@ -49,7 +49,8 @@
 
       <div class="col-6 card form">
         <span class="badge">General</span>
-        <form style="margin-top:14px;">
+        <form id="partnerform"> </form>
+        <form> style="margin-top:14px;" </form>
           <div class="field">
             <label for="name">Name</label>
             <input id="name" name="name" placeholder="Your name" />
@@ -122,5 +123,38 @@
 
 <script src="assets/js/main.js"></script>
 <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script>
+  const partnerForm = document.getElementById("partnerForm");
+  const partnerStatus = document.getElementById("partnerStatus");
+
+  partnerForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    partnerStatus.textContent = "Sending...";
+
+    const payload = {
+      business: document.getElementById("biz").value,
+      market: document.getElementById("market").value,
+      role: document.getElementById("role").value,
+      message: document.getElementById("pmsg").value,
+      email: document.getElementById("email").value,
+      name: document.getElementById("name")?.value || ""
+    };
+
+    try{
+      const r = await fetch("https://api.theculturebox.shop/partner", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await r.json();
+      if(!data.ok) throw new Error(data.error || "Failed");
+
+      partnerStatus.textContent = "Submitted. We’ll reach out shortly.";
+      partnerForm.reset();
+    } catch(err){
+      partnerStatus.textContent = "Error sending. Please try again in a moment.";
+    }
+  });
+</script>
 </body>
 </html>
