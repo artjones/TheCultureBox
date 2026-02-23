@@ -103,7 +103,7 @@
         </p>
 
         <div class="card form">
-              <form id="joinForm">            <div class="field">
+              <form id="joinForm" class="field">
               <label for="tier">Membership tier</label>
               <select id="tier" name="tier" required>
                 <option value="starter">Starter — $29/mo</option>
@@ -146,12 +146,10 @@
               </select>
               <div class="helper">We do not sell or ship cannabis. Local perks vary by jurisdiction and partner availability.</div>
             </div>
-
-            <button class="btn btn-primary" type="submit">Continue</button>
-               <div id="joinStatus" class="helper" style="margin-top:10px;"></div>
-            <div class="helper" style="margin-top:10px;">
-              By joining, you agree to our terms and acknowledge local perk availability varies by location.
-            </div>
+               <button class="btn btn-primary" type="submit">Continue</button>
+                 <div id="joinStatus" class="helper" style="margin-top:10px;"></div>
+                      By joining, you agree to our terms and acknowledge local perk availability varies by location.
+             </div>
           </form>
         </div>
       </div>
@@ -209,6 +207,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
+
       const data = await r.json();
       if(!data.ok) throw new Error(data.error || "Failed");
 

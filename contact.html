@@ -49,8 +49,7 @@
 
       <div class="col-6 card form">
         <span class="badge">General</span>
-        <form id="partnerform"> </form>
-        <form> style="margin-top:14px;" </form>
+        <form id="partnerForm" style="margin-top:14px;">
           <div class="field">
             <label for="name">Name</label>
             <input id="name" name="name" placeholder="Your name" />
@@ -100,8 +99,8 @@
             <textarea id="pmsg" name="pmsg" rows="5" placeholder="Standard partner fee, premium placement, events, etc."></textarea>
           </div>
 
-          <button class="btn btn-primary" type="button">Apply (wire API later)</button>
-          <div class="helper" style="margin-top:10px;">
+         <button class="btn btn-primary" type="submit">Apply</button>
+             <div id="partnerStatus" class="helper" style="margin-top:10px;"></div>
             DMV requires verified licensing for cannabis partners. Partners control product, pricing, and checkout locally.
           </div>
         </form>
@@ -137,7 +136,7 @@
       role: document.getElementById("role").value,
       message: document.getElementById("pmsg").value,
       email: document.getElementById("email").value,
-      name: document.getElementById("name")?.value || ""
+      name: document.getElementById("name") ? document.getElementById("name").value : ""
     };
 
     try{
@@ -146,6 +145,7 @@
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
       });
+
       const data = await r.json();
       if(!data.ok) throw new Error(data.error || "Failed");
 
