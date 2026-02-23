@@ -71,6 +71,16 @@ body{
   gap: 18px;
 }
 
+.wordmark{
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+
 .wordmark .mark{
   width: 28px;
   height: 28px;
@@ -87,8 +97,7 @@ body{
   height: 18px;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
-  filter: brightness(0) invert(1);
-  opacity: .9;
+  opacity: .95;
 }
 
 .navlinks{
