@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Culture Box</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+
+  <!-- Favicons (add later) -->
+  <meta name="theme-color" content="#010000" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="wordmark" href="index.html">
+        <span class="mark">▦</span>
+        THE CULTURE BOX
+      </a>
+
+      <nav class="navlinks">
+        <a href="membership.html">Membership</a>
+        <a href="how-it-works.html">How it works</a>
+        <a href="local-perks.html">Local perks</a>
+        <a href="partners.html">Partners</a>
+        <a href="faq.html">FAQ</a>
+        <a class="btn btn-primary" href="membership.html">Join</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="kicker"><span class="dot"></span> Members club • Access • Culture • Community</div>
+        <h1>Culture-first membership.<br/>Local perks where it’s legal.</h1>
+        <p class="subhead">
+          The Culture Box is a members club that unlocks curated local partner perks—licensed cannabis partners in legal markets,
+          and hemp/culture partners where permitted—plus a monthly culture box built around music, art, and lifestyle.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="membership.html">View membership</a>
+          <a class="btn" href="partners.html">Become a partner</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid">
+        <div class="col-12">
+          <span class="badge">Launch markets</span>
+        </div>
+
+        <div class="col-6 card market">
+          <h3>DMV (Flagship Legal Market)</h3>
+          <p class="small">
+            Licensed local dispensary partners. Member perks, drops, and events—handled locally by partners.
+          </p>
+          <a class="btn" href="local-perks.html">Explore DMV perks</a>
+        </div>
+
+        <div class="col-6 card market">
+          <h3>San Antonio (Hemp & Culture)</h3>
+          <p class="small">
+            Local hemp/THCa + culture partners where permitted. Same membership, Texas-safe structure.
+          </p>
+          <a class="btn" href="local-perks.html">Explore San Antonio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid">
+        <div class="col-12">
+          <span class="badge">Membership tiers</span>
+        </div>
+
+        <div class="col-4 card tier">
+          <h3>Starter</h3>
+          <p class="price">$25–$30<span class="small">/mo</span></p>
+          <ul>
+            <li>Monthly culture box (lite)</li>
+            <li>Music + artist spotlights</li>
+            <li>Local perks (where available)</li>
+          </ul>
+        </div>
+
+        <div class="col-4 card tier">
+          <h3>Adventure</h3>
+          <p class="price">$65–$75<span class="small">/mo</span></p>
+          <ul>
+            <li>Standard culture box</li>
+            <li>Exclusive content</li>
+            <li>Partner drops + perks</li>
+          </ul>
+        </div>
+
+        <div class="col-4 card tier">
+          <h3>Culture (Ultimate)</h3>
+          <p class="price">$120–$150<span class="small">/mo</span></p>
+          <ul>
+            <li>Premium box + collabs</li>
+            <li>Early access drops</li>
+            <li>VIP partner perks (where legal)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> The Culture Box</div>
+      <div class="legal">
+        The Culture Box does not sell or ship cannabis. Cannabis-related perks are provided by licensed third-party partners in legal
+        jurisdictions only. Availability varies by location.
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
