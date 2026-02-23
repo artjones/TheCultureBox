@@ -71,24 +71,24 @@ body{
   gap: 18px;
 }
 
-.wordmark{
-  font-family: var(--font-display);
-  font-weight: 900;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  display:flex;
-  align-items:center;
-  gap: 10px;
+.wordmark .mark{
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
 }
 
-.wordmark .mark{
-  width: 26px;
-  height: 26px;
-  border-radius: 8px;
-  background: rgba(156,255,0,.12);
-  border: 1px solid rgba(156,255,0,.30);
-  display:grid;
-  place-items:center;
+.wordmark .mark img{
+  width: 18px;
+  height: 18px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  filter: brightness(0) invert(1);
+  opacity: .9;
 }
 
 .navlinks{
