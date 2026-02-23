@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Membership | The Culture Box</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="theme-color" content="#010000" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="index.html">
+      <span class="mark">▦</span>
+      THE CULTURE BOX
+    </a>
+
+    <nav class="navlinks">
+      <a href="membership.html">Membership</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="local-perks.html">Local perks</a>
+      <a href="partners.html">Partners</a>
+      <a href="faq.html">FAQ</a>
+      <a class="btn btn-primary" href="#join">Join</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="kicker"><span class="dot"></span> Join now • Membership-first • Location-aware perks</div>
+      <h1>Choose your tier.<br/>Unlock your market.</h1>
+      <p class="subhead">
+        Membership ships culture nationwide. Local perks unlock only in markets where we have authorized partners.
+        Licensed cannabis partners appear only in legal jurisdictions. In non-legal states, perks may include hemp/culture partners where permitted.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid">
+      <div class="col-4 card tier">
+        <span class="badge">Starter</span>
+        <h3 style="margin-top:10px;">Starter Member</h3>
+        <p class="price">$29<span class="small">/mo</span></p>
+        <ul>
+          <li>Monthly culture box (lite)</li>
+          <li>Music + artist spotlights</li>
+          <li>Local perks (where available)</li>
+        </ul>
+        <div style="margin-top:14px;">
+          <a class="btn btn-primary" href="#join">Join Starter</a>
+        </div>
+      </div>
+
+      <div class="col-4 card tier">
+        <span class="badge">Adventure</span>
+        <h3 style="margin-top:10px;">Adventure Member</h3>
+        <p class="price">$75<span class="small">/mo</span></p>
+        <ul>
+          <li>Standard culture box + accessories</li>
+          <li>Exclusive digital content</li>
+          <li>Partner drops + perks (where available)</li>
+        </ul>
+        <div style="margin-top:14px;">
+          <a class="btn btn-primary" href="#join">Join Adventure</a>
+        </div>
+      </div>
+
+      <div class="col-4 card tier">
+        <span class="badge">Culture</span>
+        <h3 style="margin-top:10px;">Culture Member (Ultimate)</h3>
+        <p class="price">$149<span class="small">/mo</span></p>
+        <ul>
+          <li>Premium box + limited collabs</li>
+          <li>Early access drops</li>
+          <li>VIP perks (where available)</li>
+        </ul>
+        <div style="margin-top:14px;">
+          <a class="btn btn-primary" href="#join">Join Culture</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="section">
+    <div class="container grid">
+      <div class="col-6">
+        <span class="badge">Join now</span>
+        <h1 style="font-size:42px; margin-top:10px;">Create your membership.</h1>
+        <p class="subhead">
+          This is a live “Join now” flow placeholder. Next step is wiring Stripe checkout + member dashboard.
+          For now, you’ll capture the exact fields you need for location-aware perks.
+        </p>
+
+        <div class="card form">
+          <form>
+            <div class="field">
+              <label for="tier">Membership tier</label>
+              <select id="tier" name="tier" required>
+                <option value="starter">Starter — $29/mo</option>
+                <option value="adventure">Adventure — $75/mo</option>
+                <option value="culture">Culture — $149/mo</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="state">State</label>
+              <select id="state" name="state" required>
+                <option value="">Select your state</option>
+                <option value="DC">DC</option>
+                <option value="MD">Maryland</option>
+                <option value="VA">Virginia</option>
+                <option value="TX">Texas</option>
+                <option value="OTHER">Other</option>
+              </select>
+              <div class="helper">Perks are market-based. If we don’t have partners in your city yet, you still get the culture box.</div>
+            </div>
+
+            <div class="field">
+              <label for="city">City / Metro</label>
+              <input id="city" name="city" placeholder="Example: Washington DC / Silver Spring / San Antonio" required />
+            </div>
+
+            <hr class="sep" />
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required />
+            </div>
+
+            <div class="field">
+              <label for="age">21+ confirmation</label>
+              <select id="age" name="age" required>
+                <option value="">Select</option>
+                <option value="yes">Yes, I am 21+</option>
+                <option value="no">No</option>
+              </select>
+              <div class="helper">We do not sell or ship cannabis. Local perks vary by jurisdiction and partner availability.</div>
+            </div>
+
+            <button class="btn btn-primary" type="button">
+              Continue to Checkout (Stripe next)
+            </button>
+            <div class="helper" style="margin-top:10px;">
+              By joining, you agree to our terms and acknowledge local perk availability varies by location.
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="card tier" style="padding:18px;">
+          <span class="badge">What you’re buying</span>
+          <h3 style="margin-top:10px;">Membership + access</h3>
+          <p class="small">
+            The Culture Box is a members club. Your subscription pays for the culture box, the platform, and curated access to local partners.
+          </p>
+          <ul>
+            <li><b>DMV:</b> licensed cannabis partner perks where legal</li>
+            <li><b>San Antonio:</b> hemp & culture partners where permitted</li>
+            <li><b>Everywhere:</b> culture-first content + brand drops</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> The Culture Box</div>
+    <div class="legal">
+      The Culture Box does not sell or ship cannabis. Cannabis-related perks are provided by licensed third-party partners in legal
+      jurisdictions only. Availability varies by location.
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

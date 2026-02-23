@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Local Perks | The Culture Box</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <meta name="theme-color" content="#010000" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="wordmark" href="index.html"><span class="mark">▦</span> THE CULTURE BOX</a>
+    <nav class="navlinks">
+      <a href="membership.html">Membership</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="local-perks.html">Local perks</a>
+      <a href="partners.html">Partners</a>
+      <a href="faq.html">FAQ</a>
+      <a class="btn btn-primary" href="membership.html#join">Join</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="kicker"><span class="dot"></span> Geo-contained • Partner-provided • Member-only</div>
+      <h1>Local perks by market.</h1>
+      <p class="subhead">
+        Select a market to see how perks work. Perks are provided by authorized local partners and vary by location.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container grid">
+
+      <div class="col-6 card form">
+        <span class="badge">Choose market</span>
+        <form style="margin-top:14px;">
+          <div class="field">
+            <label for="market">Market</label>
+            <select id="market">
+              <option value="dmv">DMV (Flagship)</option>
+              <option value="satx">San Antonio (Hemp & Culture)</option>
+            </select>
+          </div>
+          <div class="helper">This is MVP behavior. Later we’ll auto-detect from signup + member login.</div>
+        </form>
+      </div>
+
+      <div class="col-6 card tier" style="padding:18px;">
+        <span class="badge">Perks you can expect</span>
+        <ul style="margin-top:12px;">
+          <li>Member discounts (partner-defined)</li>
+          <li>Partner drops (when available)</li>
+          <li>Events + pop-ups</li>
+          <li>Member-only experiences</li>
+        </ul>
+      </div>
+
+      <div id="dmvBlock" class="col-12 card market">
+        <h3>DMV — Licensed Cannabis Partners</h3>
+        <p class="small">
+          In DMV, local perks are provided by licensed dispensary partners. Partners control inventory, pricing, fulfillment, and compliance.
+          Members pay partners directly.
+        </p>
+        <div class="small">
+          <b>Coming soon:</b> partner listings, perk QR, featured drops.
+        </div>
+      </div>
+
+      <div id="satxBlock" class="col-12 card market" style="display:none;">
+        <h3>San Antonio — Hemp & Culture Partners</h3>
+        <p class="small">
+          In San Antonio, perks may include hemp-derived and culture partners where permitted. No shipping, no subscriptions for hemp products—local only.
+        </p>
+        <div class="small">
+          <b>Coming soon:</b> partner listings, events calendar, member specials.
+        </div>
+      </div>
+
+      <div class="col-12 card tier" style="padding:18px;">
+        <h3 style="margin:0 0 8px;">Compliance statement</h3>
+        <p class="small" style="margin:0;">
+          The Culture Box does not sell or ship cannabis. Cannabis-related perks are provided by licensed third-party partners in legal jurisdictions only.
+          Availability varies by location.
+        </p>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>© <span id="year"></span> The Culture Box</div>
+    <div class="legal">
+      The Culture Box does not sell or ship cannabis. Cannabis-related perks are provided by licensed third-party partners in legal jurisdictions only.
+      Availability varies by location.
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const market = document.getElementById("market");
+  const dmv = document.getElementById("dmvBlock");
+  const satx = document.getElementById("satxBlock");
+
+  function renderMarket(){
+    if(market.value === "satx"){
+      dmv.style.display = "none";
+      satx.style.display = "block";
+    } else {
+      dmv.style.display = "block";
+      satx.style.display = "none";
+    }
+  }
+
+  market.addEventListener("change", renderMarket);
+  renderMarket();
+</script>
+</body>
+</html>
